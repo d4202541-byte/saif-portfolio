@@ -63,7 +63,11 @@
       linear-gradient(180deg,#0a0a0c,#0e0e12 55%,#09090b)}
     body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E")}
     a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
+    img{display:block;max-width:100%;-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+    .protected-image-container{position:relative}
+    .image-watermark{position:absolute;z-index:8;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-18deg);pointer-events:none;user-select:none;-webkit-user-select:none;white-space:nowrap;padding:.42em .85em;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(7,7,10,.13);color:rgba(255,255,255,.48);font-family:var(--font-en);font-size:clamp(.68rem,1.4vw,1rem);font-weight:800;letter-spacing:.08em;text-shadow:0 1px 8px rgba(0,0,0,.65);backdrop-filter:blur(1px)}
+    .proof-section .image-watermark{background:rgba(20,20,22,.08);border-color:rgba(20,20,22,.18);color:rgba(20,20,22,.48);text-shadow:0 1px 7px rgba(255,255,255,.65)}
+    .dialog-image-wrap{position:relative}
     button,input,select,textarea{font:inherit}
     button{color:inherit}
     :focus-visible{outline:2px solid var(--accent);outline-offset:4px}
@@ -365,7 +369,7 @@
 
         <div class="hero-visual reveal">
           <div class="portrait-shell">
-            <img src="assets/hero-saif.webp" alt="سيف شرفا، متخصص تسويق الأداء وإدارة الحملات الإعلانية" width="1000" height="1000" fetchpriority="high" decoding="async">
+            <img src="assets/hero-saif.webp" alt="سيف شرفا، متخصص تسويق الأداء وإدارة الحملات الإعلانية" width="1000" height="1000" fetchpriority="high" decoding="async" data-no-watermark>
             <div class="portrait-caption">
               <div><strong>Saif Shorfa</strong><span data-i="portraitRole">Performance Marketing & Measurement</span></div>
               <div class="signature">Google Ads<br>GA4 · GTM</div>
@@ -501,7 +505,7 @@
 
     <section class="section" id="about">
       <div class="container about-grid">
-        <div class="about-photo reveal"><img src="assets/portrait-saif.webp" alt="سيف شرفا، متخصص تسويق الأداء" width="1000" height="1250" loading="lazy" decoding="async"></div>
+        <div class="about-photo reveal"><img src="assets/portrait-saif.webp" alt="سيف شرفا، متخصص تسويق الأداء" width="1000" height="1250" loading="lazy" decoding="async" data-no-watermark></div>
         <div class="about-copy reveal">
           <p class="kicker" data-i="aboutKicker">About Saif</p>
           <h2 data-i="aboutTitle">تتعامل معي مباشرة—من التشخيص إلى التنفيذ والتقرير.</h2>
@@ -546,7 +550,7 @@
           </div>
         </div>
         <footer>
-          <div class="footer-inner"><span data-i="footerCopy">© 2026 سيف شرفا. نتائج موثقة، وقرارات مبنية على بيانات.</span><span>REMOTE · KSA & GCC</span></div>
+          <div class="footer-inner"><span data-i="footerCopy">© 2026 سيف شرفا. جميع الصور والأعمال محفوظة الحقوق، ويُمنع نسخها أو إعادة استخدامها دون إذن.</span><span>REMOTE · KSA & GCC</span></div>
         </footer>
       </div>
     </section>
@@ -564,7 +568,7 @@
 
   <dialog id="proofDialog" aria-label="Account screenshot">
     <div class="dialog-bar"><span id="dialogCaption">Account evidence</span><button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button></div>
-    <img id="dialogImage" alt="Full account screenshot">
+    <div class="dialog-image-wrap protected-image-container"><img id="dialogImage" alt="Full account screenshot" draggable="false"><span class="image-watermark" aria-hidden="true">© SAIF SHORFA</span></div>
   </dialog>
 
   <script>
@@ -587,7 +591,7 @@
         proofKicker:"Account Evidence",proofTitle:"Every number has <span class='accent'>a source.</span>",proofIntro:"Open any screenshot in full size. Sensitive client data has been removed or hidden.",
         aboutKicker:"About Saif",aboutTitle:"You work with me directly—from diagnosis to execution and reporting.",aboutCopy:"I work in performance marketing across Saudi Arabia and the Gulf, with a focus on accounts that need rebuilding: campaigns with unclear returns, unreliable tracking, or data that cannot answer the most important question—what is actually creating revenue?",credOneLabel:"Focus",credOneValue:"Paid Growth + Measurement",credTwoLabel:"Markets",credTwoValue:"Saudi Arabia and GCC",credThreeLabel:"Languages",credThreeValue:"Arabic and English",
         contactKicker:"Start a Project",contactTitle:"Send the problem. I will return with <span class='accent'>a clear first diagnosis.</span>",contactCopy:"Share the project details briefly. Submitting opens a prepared WhatsApp message to my number directly—no account and no email form delay.",
-        formName:"Name *",formBusiness:"Company or website",formService:"Service needed",formBudget:"Monthly budget",formProblem:"What is the biggest problem right now? *",serviceOptionOne:"Paid campaign management",serviceOptionTwo:"GA4 / GTM tracking",serviceOptionThree:"App marketing",serviceOptionFour:"Technical SEO",serviceOptionFive:"Account review only",budgetOne:"Under SAR 5,000",budgetTwo:"SAR 5,000 – 15,000",budgetThree:"SAR 15,000 – 50,000",budgetFour:"Over SAR 50,000",formSubmit:"Send details on WhatsApp",formNote:"WhatsApp will open with a structured message containing the form details.",footerCopy:"© 2026 Saif Shorfa. Verified outcomes, data-led decisions."
+        formName:"Name *",formBusiness:"Company or website",formService:"Service needed",formBudget:"Monthly budget",formProblem:"What is the biggest problem right now? *",serviceOptionOne:"Paid campaign management",serviceOptionTwo:"GA4 / GTM tracking",serviceOptionThree:"App marketing",serviceOptionFour:"Technical SEO",serviceOptionFive:"Account review only",budgetOne:"Under SAR 5,000",budgetTwo:"SAR 5,000 – 15,000",budgetThree:"SAR 15,000 – 50,000",budgetFour:"Over SAR 50,000",formSubmit:"Send details on WhatsApp",formNote:"WhatsApp will open with a structured message containing the form details.",footerCopy:"© 2026 Saif Shorfa. All images and work are protected and may not be copied or reused without permission."
       }
     };
     const ar = {};
@@ -606,6 +610,27 @@
       document.title=language==='ar'?'سيف شرفا | تسويق أداء، Google Ads وبنية قياس':'Saif Shorfa | Performance Marketing & Measurement';
     }
     langBtn.addEventListener('click',()=>setLanguage(language==='ar'?'en':'ar'));
+
+    document.querySelectorAll('img:not(#dialogImage):not([data-no-watermark])').forEach(img=>{
+      img.draggable=false;
+      const parent=img.parentElement;
+      if(!parent)return;
+      parent.classList.add('protected-image-container');
+      if(!parent.querySelector(':scope > .image-watermark')){
+        const mark=document.createElement('span');
+        mark.className='image-watermark';
+        mark.setAttribute('aria-hidden','true');
+        mark.textContent='© SAIF SHORFA';
+        parent.appendChild(mark);
+      }
+    });
+
+    document.addEventListener('contextmenu',event=>{
+      if(event.target.closest('img,.protected-image-container'))event.preventDefault();
+    });
+    document.addEventListener('dragstart',event=>{
+      if(event.target.closest('img,.protected-image-container'))event.preventDefault();
+    });
 
     const menuBtn=document.getElementById('menuBtn');
     const navLinks=document.getElementById('navLinks');
