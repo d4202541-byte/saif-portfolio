@@ -74,6 +74,25 @@ document.querySelectorAll('.case-details').forEach(details => {
   });
 });
 
+// A small, clearly illustrative result burst makes clicks feel connected to business outcomes.
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const clickMessages = [
+    '+$300 SALES', '+1 NEW ORDER', '+5 QUALIFIED LEADS',
+    '+$120 REVENUE', '+1 NEW OPPORTUNITY', '+3 APP INSTALLS'
+  ];
+  let clickIndex = 0;
+  document.addEventListener('click', event => {
+    if (event.target.closest('.floating-whatsapp, #dialogClose, input, select, textarea')) return;
+    const result = document.createElement('span');
+    result.className = 'click-result';
+    result.textContent = clickMessages[clickIndex++ % clickMessages.length];
+    result.style.left = Math.min(Math.max(event.clientX, 100), innerWidth - 100) + 'px';
+    result.style.top = Math.min(Math.max(event.clientY, 70), innerHeight - 60) + 'px';
+    document.body.appendChild(result);
+    result.addEventListener('animationend', () => result.remove(), {once: true});
+  });
+}
+
 const servicePresentation = [
   {logos: [['google-ads', 'Google Ads'], ['meta', 'Meta']], color: '#81adff', ar: ['هيكلة الحملات وتوزيع الميزانية', 'خطة اختبارات وتحسين مستمر', 'تقرير أداء وتوصيات قابلة للتنفيذ'], en: ['Campaign structure and budget allocation', 'Testing plan and ongoing optimisation', 'Performance report and actionable recommendations'], proof: 'majesty-campaigns.png'},
   {logos: [['analytics', 'Google Analytics'], ['tag-manager', 'Google Tag Manager']], color: '#ffbe68', ar: ['خريطة الأحداث ومسار التحويل', 'إعداد التحويلات وقيمها', 'اختبار دقة البيانات والتتبّع'], en: ['Event map and conversion journey', 'Conversion and value configuration', 'Tracking and data accuracy checks'], proof: 'ga4-overview.jpeg'},
@@ -140,4 +159,3 @@ ar.deliverablesLabel = 'مخرجات العمل';
 copy.en.deliverablesLabel = 'Deliverables';
 ar.serviceEvidence = 'شاهد مثالًا من العمل ↗';
 copy.en.serviceEvidence = 'See an example of the work ↗';
-
