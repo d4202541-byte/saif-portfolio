@@ -144,7 +144,7 @@ document.querySelectorAll('#services .cap-card').forEach((card, index) => {
   card.querySelector('.cap-list').before(output);
   if (config.proof) {
     const target = [...document.querySelectorAll('.proof-shot')].find(button => button.dataset.src === 'assets/' + config.proof);
-    if (target) {
+    if (target && !target.hidden) {
       target.id = 'service-evidence-' + index;
       const link = document.createElement('a');
       link.className = 'service-evidence';

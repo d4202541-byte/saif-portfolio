@@ -1,4 +1,5 @@
 :root{--max:1240px;--muted:#b6b6bc;--radius:8px;--radius-sm:8px}
+.proof-shot[hidden]{display:none!important}
 html{scroll-padding-top:90px}
 body::before{background:#0b0b0d}body::after{display:none}
 *,*::before,*::after{letter-spacing:0!important}
