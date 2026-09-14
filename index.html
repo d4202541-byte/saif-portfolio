@@ -122,6 +122,8 @@
     .hero h1 strong{font-weight:700;color:var(--accent);font-style:normal}
     .hero-lead{margin:26px 0 0;color:#b9b5af;max-width:60ch;font-size:clamp(1rem,1.45vw,1.18rem)}
     .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+    .hero-next-step{display:flex;align-items:center;gap:10px;margin:14px 0 0;color:#8f8c88;font-size:.74rem}
+    .hero-next-step::before{content:"";width:22px;height:1px;background:var(--accent)}
     .btn{min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 24px;border-radius:999px;border:1px solid var(--line-strong);font-weight:700;cursor:pointer;transition:.22s}
     .btn-primary{background:var(--accent);color:#15100e;border-color:var(--accent);box-shadow:0 12px 32px rgba(255,111,70,.22)}
     .btn-primary:hover{background:#ffab8f;transform:translateY(-2px);box-shadow:0 18px 38px rgba(255,111,70,.28)}
@@ -130,8 +132,9 @@
     .hero-meta{display:flex;flex-wrap:wrap;gap:18px 28px;margin-top:34px;color:#8f8c88;font-family:var(--font-en);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
     .hero-meta span{display:flex;align-items:center;gap:8px}
     .hero-meta i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
-    .hero-visual{position:relative;max-width:550px;justify-self:end}
-    .portrait-shell{position:relative;overflow:hidden;border-radius:34px;border:1px solid rgba(255,255,255,.16);background:#161317;box-shadow:var(--shadow);isolation:isolate}
+    .hero-visual{position:relative;max-width:550px;justify-self:end;perspective:1200px;transform-style:preserve-3d;transition:transform .18s ease-out}
+    .portrait-shell{position:relative;overflow:hidden;border-radius:34px;border:1px solid rgba(255,255,255,.16);background:#161317;box-shadow:var(--shadow);isolation:isolate;transform:translateZ(18px);transition:box-shadow .3s ease,transform .3s ease}
+    .portrait-shell:hover{box-shadow:0 38px 90px rgba(0,0,0,.48),0 0 0 1px rgba(255,143,107,.22);transform:translateZ(26px) rotateX(1deg)}
     .portrait-shell::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(11,11,13,.82) 100%);z-index:1;pointer-events:none}
     .portrait-shell::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);z-index:2;pointer-events:none}
     .portrait-shell img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center center}
@@ -139,7 +142,9 @@
     .portrait-caption strong{display:block;font-family:var(--font-en);font-size:1.08rem}
     .portrait-caption span{display:block;color:#c9c5bf;font-size:.78rem;margin-top:4px}
     .signature{font-family:var(--font-en);font-size:.72rem;color:#d8d2ca;letter-spacing:.12em;text-transform:uppercase;text-align:end}
-    .float-card{position:absolute;z-index:4;border:1px solid rgba(255,255,255,.17);background:rgba(15,15,18,.85);backdrop-filter:blur(18px);border-radius:16px;padding:14px 16px;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+    .float-card{position:absolute;z-index:4;border:1px solid rgba(255,255,255,.17);background:rgba(15,15,18,.85);backdrop-filter:blur(18px);border-radius:16px;padding:14px 16px;box-shadow:0 18px 40px rgba(0,0,0,.28);transform:translateZ(55px);animation:floatCard 5s ease-in-out infinite}
+    .float-two{animation-delay:-2.2s}
+    @keyframes floatCard{0%,100%{translate:0 0}50%{translate:0 -9px}}
     .float-card b{display:block;font-family:var(--font-en);font-size:1.22rem;line-height:1.1}
     .float-card small{display:block;color:#aaa6a0;font-size:.68rem;margin-top:6px;white-space:nowrap}
     .float-one{top:9%;inset-inline-start:-36px}.float-two{bottom:15%;inset-inline-end:-34px}
@@ -151,10 +156,17 @@
     .trust-num{font-family:var(--font-en);font-size:clamp(1.75rem,3.3vw,2.8rem);font-weight:800;letter-spacing:-.055em;line-height:1;color:#fff}
     .trust-label{margin-top:10px;color:#94908b;font-size:.78rem}
 
+    .funnel-bridge{padding-block:26px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(255,143,107,.08),rgba(255,255,255,.025),rgba(255,143,107,.05))}
+    .funnel-bridge-inner{display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .funnel-bridge-copy{display:flex;align-items:center;gap:14px;color:#d9d4cc;font-size:.86rem}
+    .funnel-bridge-copy strong{color:#fff}
+    .funnel-bridge-copy i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 7px rgba(255,143,107,.1);flex:0 0 auto}
+    .funnel-bridge .btn{min-height:44px;padding-inline:18px;font-size:.78rem}
+
     .work-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:46px}
     .work-note{color:#898680;font-size:.8rem;max-width:34ch}
     .cases{display:grid;gap:22px}
-    .case-card{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));overflow:hidden;transition:.28s}
+    .case-card{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));overflow:hidden;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;transform-style:preserve-3d}
     .case-card:hover{transform:translateY(-5px);border-color:rgba(255,143,107,.45);box-shadow:0 24px 58px rgba(0,0,0,.25)}
     .case-card.featured{display:grid;grid-template-columns:1.08fr .92fr;min-height:470px}
     .case-content{padding:clamp(28px,4vw,52px);display:flex;flex-direction:column}
@@ -192,7 +204,7 @@
     .step h3{margin:0;font-size:1.18rem}.step p{margin:9px 0 0;color:#9a9691;font-size:.92rem;max-width:60ch}
 
     .capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
-    .cap-card{border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025);padding:28px;transition:.25s}
+    .cap-card{border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025);padding:28px;transition:transform .25s ease,background .25s ease,border-color .25s ease;transform-style:preserve-3d}
     .cap-card:hover{background:rgba(255,255,255,.05);border-color:var(--line-strong)}
     .cap-icon{width:44px;height:44px;border:1px solid rgba(255,143,107,.35);background:rgba(255,143,107,.08);border-radius:14px;display:grid;place-items:center;color:var(--accent);font-family:var(--font-en);font-weight:800;font-size:.75rem}
     .cap-card h3{margin:22px 0 0;font-size:1.12rem}.cap-card p{margin:10px 0 0;color:#96928d;font-size:.88rem}
@@ -262,6 +274,8 @@
 
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
     .reveal.in{opacity:1;transform:none}
+    .case-card.in:hover{transform:translateY(-5px) rotateX(1deg) rotateY(-.7deg)}
+    .cap-card.in:hover{transform:translateY(-5px) rotateX(1deg) rotateY(-1deg);box-shadow:0 18px 42px rgba(0,0,0,.18)}
 
     @media(max-width:1050px){
       .hero-grid{grid-template-columns:1fr .82fr;gap:40px}.float-one{inset-inline-start:-18px}.float-two{inset-inline-end:-18px}
@@ -275,6 +289,7 @@
       .menu-btn{display:inline-flex}.nav-cta{display:none}
       .hero{min-height:auto;padding-top:124px}.hero-grid{grid-template-columns:1fr}.hero-copy{text-align:start}.hero h1{max-width:13ch}.hero-visual{justify-self:center;width:min(100%,590px)}
       .trust-grid{grid-template-columns:repeat(2,1fr)}.trust-item:nth-child(2){border-inline-end:0}.trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .funnel-bridge-inner{align-items:flex-start;flex-direction:column;gap:16px}.funnel-bridge .btn{width:auto}
       .work-head{display:block}.work-note{margin-top:18px}.case-mini-grid{grid-template-columns:1fr}.capabilities{grid-template-columns:1fr}
       .proof-shot:nth-child(n){grid-column:span 6}.about-grid{grid-template-columns:1fr}.cred-grid{grid-template-columns:1fr}
       .portrait-shell{height:clamp(360px,68vw,500px)}
@@ -284,7 +299,7 @@
     }
     @media(max-width:580px){
       :root{--radius:20px}.nav-inner{height:68px}.nav-links{top:68px}.brand-name{display:none}.icon-btn{height:38px;padding-inline:13px}.menu-btn{width:38px}
-      .hero{padding-top:108px}.availability{font-size:.7rem}.hero h1{font-size:clamp(2.45rem,13vw,4.4rem)}.hero-actions{display:grid}.btn{width:100%}.hero-meta{gap:12px 16px}
+      .hero{padding-top:108px}.availability{font-size:.7rem}.hero h1{font-size:clamp(2.45rem,13vw,4.4rem)}.hero-actions{display:grid}.btn{width:100%}.hero-meta{gap:12px 16px}.hero-next-step{font-size:.68rem}
       .hero-visual{width:100%;max-width:430px}
       .portrait-shell{height:clamp(270px,78vw,330px);border-radius:24px}
       .portrait-shell img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center 24%}
@@ -367,6 +382,7 @@
             <a class="btn btn-primary" href="#work"><span data-i="heroWork">شاهد أبرز النتائج</span><span aria-hidden="true">↓</span></a>
             <a class="btn btn-secondary" href="#contact"><span data-i="heroCall">اطلب مراجعة حسابك</span><span aria-hidden="true">↗</span></a>
           </div>
+          <p class="hero-next-step" data-i="heroNextStep">أول خطوة: نحدد أين يتسرّب النمو قبل أن نزيد الميزانية.</p>
           <div class="hero-meta">
             <span><i></i><b data-i="metaOne">Paid Media</b></span>
             <span><i></i><b data-i="metaTwo">Measurement</b></span>
@@ -394,6 +410,13 @@
         <div class="trust-item"><div class="trust-num">5,070</div><div class="trust-label" data-i="trustTwo">تنزيل تطبيق بتكلفة 0.43 ريال</div></div>
         <div class="trust-item"><div class="trust-num">9.5×</div><div class="trust-label" data-i="trustThree">عائد إنفاق لمتجر إلكتروني</div></div>
         <div class="trust-item"><div class="trust-num">15+</div><div class="trust-label" data-i="trustFour">موقعًا في مشاريع SEO وتقنية</div></div>
+      </div>
+    </section>
+
+    <section class="funnel-bridge" aria-label="Next step">
+      <div class="container funnel-bridge-inner">
+        <p class="funnel-bridge-copy"><i></i><span><strong>عندك إنفاق قائم؟</strong> أرسل المشكلة كما هي، وسأبدأ من نقطة التسرب الأقرب للنتيجة.</span></p>
+        <a class="btn btn-primary" href="#contact">ابدأ بتشخيص مختصر <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
@@ -499,13 +522,13 @@
           <p class="section-intro" data-i="proofIntro">اضغط على أي لقطة لفتحها بالحجم الكامل. تم إخفاء أي بيانات حساسة تخص العملاء.</p>
         </div>
         <div class="proof-grid">
-          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/majesty-campaigns.png" data-caption="Google Ads · Healthcare campaigns"><img src="assets/majesty-campaigns.png" alt="Google Ads healthcare campaigns" loading="lazy"><span class="proof-caption"><b>Healthcare · Google Ads</b><span>814 conversions</span></span></button>
-          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/majesty-june.png" data-caption="Google Ads · Healthcare June performance"><img src="assets/majesty-june.png" alt="Google Ads healthcare performance in June" loading="lazy"><span class="proof-caption"><b>Healthcare · June</b><span>SAR 7.63 CPA</span></span></button>
-          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/app-uac-year.jpeg" data-caption="Google Ads · App campaign yearly performance"><img src="assets/app-uac-year.jpeg" alt="Google Ads app campaign performance" loading="lazy"><span class="proof-caption"><b>App Campaign</b><span>5.07K installs</span></span></button>
-          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/play-growth.jpeg" data-caption="Play Console · Store growth"><img src="assets/play-growth.jpeg" alt="Google Play Console growth" loading="lazy"><span class="proof-caption"><b>Play Console</b><span>+36% impressions</span></span></button>
-          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/firebase-retention.jpeg" data-caption="Firebase · Day-one retention"><img src="assets/firebase-retention.jpeg" alt="Firebase retention report" loading="lazy"><span class="proof-caption"><b>Firebase</b><span>D1 retention</span></span></button>
-          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/ga4-traffic.jpeg" data-caption="GA4 · Traffic acquisition"><img src="assets/ga4-traffic.jpeg" alt="GA4 traffic acquisition report" loading="lazy"><span class="proof-caption"><b>GA4</b><span>Traffic acquisition</span></span></button>
           <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/ga4-overview.jpeg" data-caption="GA4 · Overview"><img src="assets/ga4-overview.jpeg" alt="GA4 overview report" loading="lazy"><span class="proof-caption"><b>GA4</b><span>Measurement overview</span></span></button>
+          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/ga4-traffic.jpeg" data-caption="GA4 · Traffic acquisition"><img src="assets/ga4-traffic.jpeg" alt="GA4 traffic acquisition report" loading="lazy"><span class="proof-caption"><b>GA4</b><span>Traffic acquisition</span></span></button>
+          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/firebase-retention.jpeg" data-caption="Firebase · Day-one retention"><img src="assets/firebase-retention.jpeg" alt="Firebase retention report" loading="lazy"><span class="proof-caption"><b>Firebase</b><span>D1 retention</span></span></button>
+          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/play-growth.jpeg" data-caption="Play Console · Store growth"><img src="assets/play-growth.jpeg" alt="Google Play Console growth" loading="lazy"><span class="proof-caption"><b>Play Console</b><span>+36% impressions</span></span></button>
+          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/app-uac-year.jpeg" data-caption="Google Ads · App campaign yearly performance"><img src="assets/app-uac-year.jpeg" alt="Google Ads app campaign performance" loading="lazy"><span class="proof-caption"><b>App Campaign</b><span>5.07K installs</span></span></button>
+          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/majesty-june.png" data-caption="Google Ads · Healthcare June performance"><img src="assets/majesty-june.png" alt="Google Ads healthcare performance in June" loading="lazy"><span class="proof-caption"><b>Healthcare · June</b><span>SAR 7.63 CPA</span></span></button>
+          <button class="proof-shot proof-trigger reveal" type="button" data-src="assets/majesty-campaigns.png" data-caption="Google Ads · Healthcare campaigns"><img src="assets/majesty-campaigns.png" alt="Google Ads healthcare campaigns" loading="lazy"><span class="proof-caption"><b>Healthcare · Google Ads</b><span>814 conversions</span></span></button>
         </div>
       </div>
     </section>
@@ -583,7 +606,7 @@
       en:{
         navWork:"Work",navMethod:"Method",navServices:"Services",navAbout:"About",navContact:"Contact",navCta:"Start a project",waFloat:"WhatsApp",
         available:"Available for selected projects across KSA & GCC",
-        heroTitle:"I turn ad spend into a <strong>measurable growth system.</strong>",
+        heroTitle:"I turn ad spend into a <strong>measurable growth system.</strong>",heroNextStep:"First step: find where growth is leaking before increasing the budget.",
         heroLead:"I manage Google Ads, Meta and app campaigns, then build GA4, GTM and tracking from the ground up—so you know where spend goes and what actually creates the result.",
         heroWork:"See selected results",heroCall:"Request an account review",metaOne:"Paid Media",metaTwo:"Measurement",metaThree:"KSA & GCC",portraitRole:"Performance Marketing & Measurement",floatOne:"Cost per qualified conversion",floatTwo:"E-commerce ROAS",
         trustOne:"healthcare conversions in 25 days",trustTwo:"app installs at SAR 0.43 each",trustThree:"return on ad spend for e-commerce",trustFour:"sites across SEO and technical projects",
@@ -651,6 +674,18 @@
       entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');revealObserver.unobserve(entry.target)}})
     },{threshold:.08});
     document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+    const heroVisual=document.querySelector('.hero-visual');
+    const motionOK=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(heroVisual&&motionOK){
+      heroVisual.addEventListener('pointermove',event=>{
+        const box=heroVisual.getBoundingClientRect();
+        const x=(event.clientX-box.left)/box.width-.5;
+        const y=(event.clientY-box.top)/box.height-.5;
+        heroVisual.style.transform=`rotateX(${y*-4}deg) rotateY(${x*5}deg)`;
+      });
+      heroVisual.addEventListener('pointerleave',()=>{heroVisual.style.transform=''});
+    }
 
     const progress=document.getElementById('progress');
     function updateProgress(){
