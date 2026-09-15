@@ -159,3 +159,10 @@ ar.deliverablesLabel = 'مخرجات العمل';
 copy.en.deliverablesLabel = 'Deliverables';
 ar.serviceEvidence = 'شاهد مثالًا من العمل ↗';
 copy.en.serviceEvidence = 'See an example of the work ↗';
+
+// Repeat the complete logo sequence so the marquee loops without a visible seam.
+document.querySelectorAll('.client-track').forEach(track => {
+  if (track.dataset.loopReady) return;
+  [...track.children].forEach(item => track.appendChild(item.cloneNode(true)));
+  track.dataset.loopReady = 'true';
+});
