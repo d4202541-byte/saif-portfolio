@@ -116,3 +116,16 @@ html[dir="ltr"] .service-platforms{justify-content:flex-start}
 .client-logo.legal-firm .logo-frame{background:linear-gradient(145deg,rgba(156,119,43,.3),rgba(240,201,91,.12))!important;border:1px solid rgba(240,201,91,.25)!important}
 .client-logo.legal-firm>span:last-child{color:#dfbd72!important}
 @media(max-width:580px){.client-strip{padding-block:68px 60px!important}.client-logo{width:132px!important;min-width:132px!important;height:84px!important}.client-logo .logo-frame{height:46px!important}}
+/* Final logo rail: no cards, just confident brand marks */
+.client-marquee{padding-block:18px 28px!important;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)!important}
+.client-track{gap:26px!important;animation-duration:58s!important}
+.client-logo{width:122px!important;min-width:122px!important;height:82px!important;padding:6px 4px!important;border:0!important;border-radius:0!important;background:transparent!important;gap:8px!important;position:relative}
+.client-logo::after{content:'';position:absolute;bottom:0;width:20px;height:1px;background:rgba(240,193,108,.65);transform:scaleX(0);transition:transform .3s ease}
+.client-logo:hover{background:transparent!important;transform:translateY(-4px)}
+.client-logo:hover::after{transform:scaleX(1)}
+.client-logo .logo-frame{width:76px!important;height:52px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+.client-logo-image .logo-frame img{filter:grayscale(.2) contrast(1.08)!important;opacity:.92!important}
+.client-logo-image>span:last-child,.client-logo:not(.client-logo-image)>span{font-size:9px!important;color:#b6b1aa!important;letter-spacing:.06em!important}
+.client-logo:not(.client-logo-image)>img{width:42px!important;height:42px!important;padding:0!important;border-radius:0!important;background:transparent!important}
+.client-logo.legal-firm .logo-frame{background:transparent!important;border:0!important;box-shadow:none!important}
+@media(max-width:580px){.client-track{gap:18px!important}.client-logo{width:102px!important;min-width:102px!important;height:74px!important}.client-logo .logo-frame{width:64px!important;height:44px!important}}
