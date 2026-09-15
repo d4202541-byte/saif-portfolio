@@ -90,3 +90,4 @@ html[dir="ltr"] .service-platforms{justify-content:flex-start}
 
 /* Compact logo-fit spacing */
 .client-track{gap:8px!important}.client-logo{width:132px!important;min-width:132px!important;height:92px!important;padding:10px!important;gap:7px!important}.client-logo .logo-frame{height:48px;padding:5px}.client-logo:not(.client-logo-image)>img{width:36px!important;height:36px!important}.client-logo-image>span:last-child,.client-logo:not(.client-logo-image)>span{font-size:10px}.client-logo.legal-firm>span:last-child{font-size:10px}@media(max-width:580px){.client-logo{width:116px!important;min-width:116px!important;height:84px!important}.client-logo .logo-frame{height:42px}}
+.client-marquee:hover .client-track{animation-play-state:running!important}
