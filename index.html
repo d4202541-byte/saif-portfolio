@@ -759,6 +759,15 @@
   <script src="refinement.js"></script>
   <script>
     (() => {
+      const rail = document.querySelector('.client-track');
+      if (!rail || rail.dataset.loopReady === 'true') return;
+      const originals = [...rail.children];
+      originals.forEach(item => rail.appendChild(item.cloneNode(true)));
+      rail.dataset.loopReady = 'true';
+    })();
+  </script>
+  <script>
+    (() => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const labels = ['+$300 SALES', '+1 NEW ORDER', '+5 QUALIFIED LEADS', '+$120 REVENUE', '+1 NEW OPPORTUNITY', '+3 APP INSTALLS'];
       let index = 0;
