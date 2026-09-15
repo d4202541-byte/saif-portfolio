@@ -91,3 +91,11 @@ html[dir="ltr"] .service-platforms{justify-content:flex-start}
 /* Compact logo-fit spacing */
 .client-track{gap:8px!important}.client-logo{width:132px!important;min-width:132px!important;height:92px!important;padding:10px!important;gap:7px!important}.client-logo .logo-frame{height:48px;padding:5px}.client-logo:not(.client-logo-image)>img{width:36px!important;height:36px!important}.client-logo-image>span:last-child,.client-logo:not(.client-logo-image)>span{font-size:10px}.client-logo.legal-firm>span:last-child{font-size:10px}@media(max-width:580px){.client-logo{width:116px!important;min-width:116px!important;height:84px!important}.client-logo .logo-frame{height:42px}}
 .client-marquee:hover .client-track{animation-play-state:running!important}
+/* Editorial portfolio finish */
+.trust{position:relative;overflow:hidden;background:#151517!important}
+.trust::before{content:'RESULTS / 01';position:absolute;top:16px;inset-inline-end:var(--pad);font:700 10px var(--font-en);letter-spacing:.16em;color:#77777f}
+.trust-num{font-size:clamp(2rem,4vw,3.15rem)!important;color:#f1c06d!important}
+#services .cap-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#19191d,#121214)!important}
+#services .cap-card::after{content:'';position:absolute;inset:auto -20% -45% 35%;height:150px;background:radial-gradient(ellipse,rgba(255,143,107,.13),transparent 68%);pointer-events:none}
+#services .cap-icon{position:relative;z-index:1;width:48px;height:48px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);box-shadow:0 10px 25px rgba(0,0,0,.2)}
+#services .cap-card h3,#services .cap-card p,#services .service-output{position:relative;z-index:1}
