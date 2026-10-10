@@ -1,0 +1,10 @@
+import React from "react";
+import { hydrateRoot, createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./styles.css";
+const lang = window.location.pathname.startsWith("/ar") ? "ar" : "en";
+document.documentElement.lang = lang;
+document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+const root = document.getElementById("root");
+if (root.childElementCount) hydrateRoot(root, <App lang={lang} />);
+else createRoot(root).render(<App lang={lang} />);
