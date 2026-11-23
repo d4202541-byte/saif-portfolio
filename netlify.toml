@@ -1,2 +1,10 @@
 [build]
   publish = "."
+
+# This old preview is replaced by saif-growth.com. Send every request there
+# with a permanent redirect so Google and AI tools merge the two into one site.
+[[redirects]]
+  from = "/*"
+  to = "https://saif-growth.com/:splat"
+  status = 301
+  force = true
